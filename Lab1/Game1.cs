@@ -11,6 +11,8 @@ namespace Lab1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D _txCog;
+
 
         public Game1()
         {
@@ -39,6 +41,7 @@ namespace Lab1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            _txCog = Content.Load<Texture2D>("gearDetach");
 
             // TODO: use this.Content to load your game content here
         }
@@ -73,11 +76,15 @@ namespace Lab1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            GraphicsDevice.Clear(Color.Green);
+            spriteBatch.Begin();
+            spriteBatch.Draw(_txCog, new Rectangle(100, 100, _txCog.Width/2, _txCog.Height/2), Color.White);
+            spriteBatch.Draw(_txCog, new Vector2(120,100), Color.White);
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
+
     }
 }
